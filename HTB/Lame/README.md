@@ -102,10 +102,8 @@ searchsploit vsftpd 2.3.4
 ```
 
 > 📷 **Screenshot**
-
-```
+]
 Images/searchsploit-ftp.png
-```
 
 The results confirmed the existence of the well-known **vsFTPd 2.3.4 backdoor**.
 
@@ -124,10 +122,7 @@ searchsploit Samba 3.0.20
 ```
 
 > 📷 **Screenshot**
-
-```
 Images/searchsploit-samba.png
-```
 
 Among the available exploits, one immediately stood out.
 
@@ -151,9 +146,7 @@ nmap --script smb-vuln* 10.129.166.254 -oN nmap_smb-vuln
 
 > 📷 **Screenshot**
 
-```
 Images/nmap_smb-vuln.png
-```
 
 Interestingly, the NSE scripts did not explicitly identify CVE-2007-2447.
 
@@ -177,9 +170,8 @@ ftp 10.129.166.254
 
 > 📷 **Screenshot**
 
-```
 Images/ftp.png
-```
+
 
 Anonymous authentication succeeded without requiring credentials.
 
