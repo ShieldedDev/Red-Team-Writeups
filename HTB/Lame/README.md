@@ -62,3 +62,6 @@ HTB-Lame-VAPT-Report.pdf
 or continue below.
 
 ...
+## NMAP scan : 
+
+![Nmap scan](Images/nmap_scan.png)
