@@ -102,8 +102,8 @@ searchsploit vsftpd 2.3.4
 ```
 
 > 📷 **Screenshot**
-]
-Images/searchsploit-ftp.png
+
+![Searchsploit FTP](Images/searchsploit-ftp.png)
 
 The results confirmed the existence of the well-known **vsFTPd 2.3.4 backdoor**.
 
@@ -122,7 +122,8 @@ searchsploit Samba 3.0.20
 ```
 
 > 📷 **Screenshot**
-Images/searchsploit-samba.png
+
+![Searchploit Samba](Images/searchsploit-samba.png)
 
 Among the available exploits, one immediately stood out.
 
@@ -146,7 +147,7 @@ nmap --script smb-vuln* 10.129.166.254 -oN nmap_smb-vuln
 
 > 📷 **Screenshot**
 
-Images/nmap_smb-vuln.png
+![Nmap SMB Script](Images/nmap_smb-vuln.png)
 
 Interestingly, the NSE scripts did not explicitly identify CVE-2007-2447.
 
@@ -170,8 +171,7 @@ ftp 10.129.166.254
 
 > 📷 **Screenshot**
 
-Images/ftp.png
-
+![FTP](Images/ftp.png)
 
 Anonymous authentication succeeded without requiring credentials.
 
@@ -191,9 +191,7 @@ search samba 3.0.20
 
 > 📷 **Screenshot**
 
-```
-Images/msf_search-samba.png
-```
+![MSF Search](Images/msf_search-samba.png)
 
 Metasploit included the **Username Map Script** exploit module.
 
@@ -207,9 +205,7 @@ I executed the exploit.
 
 > 📷 **Screenshot**
 
-```
-Images/msf_samba-exploited.png
-```
+![MSF Samba Exploited](Images/msf_samba-exploited.png)
 
 The exploit successfully returned a command shell, confirming remote code execution against the target system.
 
@@ -258,9 +254,7 @@ cat /home/makis/user.txt
 
 > 📷 **Screenshot**
 
-```
-Images/lame_user-flag.png
-```
+![Lame User Flag](Images/lame_user-flag.png)
 
 Successfully obtaining the user flag confirmed complete user-level compromise.
 
@@ -284,9 +278,7 @@ cat root.txt
 
 > 📷 **Screenshot**
 
-```
-Images/lame_root-flag.png
-```
+![Root Flag](Images/lame_root-flag.png)
 
 Reading `root.txt` completed the objective of the assessment.
 
