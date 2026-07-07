@@ -216,8 +216,7 @@ python3 -m http.server 8000
 ```
 
 > 📷 **Screenshot**
-
-![HTTP Server](Images/linpeas-started.png)
+![LinPEAS](Images/linpeas.png)
 
 Next, the script was downloaded onto the target.
 
@@ -238,7 +237,7 @@ Finally, I executed the script.
 
 > 📷 **Screenshot**
 
-![LinPEAS](Images/linpeas.png)
+![HTTP Server](Images/linpeas-started.png)
 
 The enumeration identified several writable configuration files associated with FreePBX services.
 
