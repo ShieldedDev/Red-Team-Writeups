@@ -69,9 +69,9 @@ nmap -sC -sV -oN nmap_scan 10.129.166.254
 
 > 📷 **Screenshot**
 
-```
+
 ![Nmap Scan](Images/nmap_scan.png)
-```
+
 
 The scan identified four publicly accessible services.
 
