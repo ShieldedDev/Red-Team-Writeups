@@ -212,6 +212,7 @@ Rather than immediately searching for kernel exploits or SUID binaries, I began 
 First, I hosted the script locally.
 
 ```bash
+linpeas
 python3 -m http.server 8000
 ```
 
