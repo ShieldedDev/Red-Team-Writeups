@@ -195,7 +195,7 @@ sock.close
 
 ```
 
-# Explaination of Script:
+# Explaination of the Script:
  
 > (If you do not want to use or is interested in Metaspliot's exploit you can skip this section.)
 
@@ -205,6 +205,67 @@ It is designed to attack an older Microsoft web server (IIS 6.0 running on Windo
 
 In the cybersecurity world, "popping a calculator" is the universal, harmless way for a researcher to prove, "I have found a way to execute my own commands on your machine."
 
+*The Core Concepts at Play*
+To understand the code, you need to understand the two main hacking techniques it uses:
+
+*1. Buffer Overflow:* Imagine a program has a designated "cup" in its memory meant to hold exactly 8 ounces of data. If you force 100 ounces of data into that cup, it overflows onto the surrounding table. In a computer, that "table" holds critical instructions about what the program is supposed to do next. If an attacker controls the spilled data, they can overwrite those instructions and hijack the program.
+
+*2. ROP Chain (Return-Oriented Programming):* Modern computers have defenses against buffer overflows (like DEP, which marks certain memory as "non-executable"). A ROP chain is a clever bypass technique. Instead of bringing their own malicious code right away, the attacker strings together tiny snippets of code that already exist in the computer's memory, using them like Lego bricks to build a path that turns off the security defenses.
+
+*Step-by-Step Code Breakdown:*
+**1. The setup**
+```python
+import socket
+
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.connect(('127.0.0.1',80))
+```
+> **What's happening:** The script uses Python's socket library to create a network connection to a target. Here, it is connecting to 127.0.0.1 (which means "localhost" or the same computer running the script) on port 80 (the standard port for web server traffic).
+
+**2. Attack vehicle**
+```python
+pay='PROPFIND / HTTP/1.1\r\nHost: localhost\r\nContent-Length: 0\r\n'
+```
+> **What's happening:** When your browser talks to a web server, it usually uses a GET request. This script uses a special, less common request called PROPFIND, which is used by a web technology called WebDAV. The vulnerability specifically exists in how the server processes PROPFIND requests. This is the vehicle carrying the bomb.
+
+**3. The ROP Chain (The "Spilled Water")**
+ 
+```Python
+pay+='If: <http://localhost/aaaaaaa'
+pay+='\xe6\xbd\xa8\xe7\xa1\xa3... [TRUNCATED] ...\xa0\x81'
+```
+
+> **What's happening:** The script adds an If: header to the HTTP request. What follows is a massively long URL. Because the URL is absurdly long, the server's memory buffer (specifically in a function called ScStoragePathFromUrl) overflows.
+
+> **The Gibberish:** All those \xe6\xbd characters are hexadecimal representations of raw bytes. This is the ROP chain. When the memory overflows, these exact bytes overwrite the server's instruction manual. These bytes are perfectly calculated to piece together existing server code to disable memory protections.
+
+**4. The Shellcode (The Payload)**
+
+```Python
+shellcode='VVYA4444444444QATAXAZAPA3QADAZABARALAYAIA...[TRUNCATED]'
+pay+=shellcode
+```
+
+> **What's happening:** Once the ROP chain disables the security, the script drops the actual payload, known as shellcode.
+ 
+> **The Gibberish:** Believe it or not, VVYA444... is actual machine instructions! It is written in a specific format called "Alphanumeric Shellcode." Because web servers often reject or mangle weird special characters in a URL, the attacker encoded the machine instructions using only standard letters and numbers. When the server reads this string, it translates to the command: Execute calc.exe.
+
+**5. Firing the Exploit**
+
+```Python
+pay+='>\r\n\r\n'
+print pay
+
+sock.send(pay)
+data = sock.recv(80960)
+
+print data
+sock.close
+```
+
+> **What's happening:** The script adds the final carriage returns (\r\n\r\n) to properly close the HTTP request. It prints the massive payload to the attacker's screen, shoots it over the network to the server (sock.send), waits to see if the server replies (sock.recv), and then hangs up the connection (sock.close).
+ 
+> If successful, the web server crashes or glitches for a microsecond, and a Calculator window silently pops open on the server's backend.
 
 
 ---
