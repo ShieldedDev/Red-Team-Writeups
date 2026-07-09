@@ -1,3 +1,0 @@
-git add .
-git commit -m "Did changes in HTB directory."
-git push origin main
