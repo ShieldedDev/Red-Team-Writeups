@@ -195,7 +195,7 @@ sock.close
 
 ```
 
-# Explaination of Script (If you do not want to use or is interested in Metaspliot's exploit you can skip this section.)
+### Explaination of Script (If you do not want to use or is interested in Metaspliot's exploit you can skip this section.)
 
 This script is an exploit, specifically a Proof of Concept (PoC) for a famous vulnerability from 2017 known as CVE-2017-7269.
 
