@@ -205,8 +205,7 @@ It is designed to attack an older Microsoft web server (IIS 6.0 running on Windo
 
 In the cybersecurity world, "popping a calculator" is the universal, harmless way for a researcher to prove, "I have found a way to execute my own commands on your machine."
 
-*The Core Concepts at Play*
-To understand the code, you need to understand the two main hacking techniques it uses:
+The Core Concepts at Play To understand the code, you need to understand the two main hacking techniques it uses:
 
 *1. Buffer Overflow:* Imagine a program has a designated "cup" in its memory meant to hold exactly 8 ounces of data. If you force 100 ounces of data into that cup, it overflows onto the surrounding table. In a computer, that "table" holds critical instructions about what the program is supposed to do next. If an attacker controls the spilled data, they can overwrite those instructions and hijack the program.
 
