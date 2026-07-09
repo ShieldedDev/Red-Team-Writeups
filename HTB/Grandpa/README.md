@@ -212,6 +212,7 @@ The Core Concepts at Play To understand the code, you need to understand the two
 *2. ROP Chain (Return-Oriented Programming):* Modern computers have defenses against buffer overflows (like DEP, which marks certain memory as "non-executable"). A ROP chain is a clever bypass technique. Instead of bringing their own malicious code right away, the attacker strings together tiny snippets of code that already exist in the computer's memory, using them like Lego bricks to build a path that turns off the security defenses.
 
 *Step-by-Step Code Breakdown:*
+
 **1. The setup**
 ```python
 import socket
