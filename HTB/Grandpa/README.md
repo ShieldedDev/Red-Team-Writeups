@@ -195,7 +195,7 @@ sock.close
 
 ```
   
-**Explaination of Script:**
+# Explaination of Script:
  
 > (If you do not want to use or is interested in Metaspliot's exploit you can skip this section.)
 
