@@ -79,7 +79,6 @@ The scan revealed only two accessible services.
 | Port | Service | Version |
 |-------|----------|----------|
 |80|HTTP|Microsoft IIS 6.0|
-|135|MSRPC|Microsoft Windows RPC|
 
 Although the attack surface appeared small, one service immediately stood out.
 
@@ -195,6 +194,16 @@ print data
 sock.close
 
 ```
+
+# Explaination of Script (If you do not want to use or is interested in Metaspliot's exploit you can skip this section.)
+
+This script is an exploit, specifically a Proof of Concept (PoC) for a famous vulnerability from 2017 known as CVE-2017-7269.
+
+It is designed to attack an older Microsoft web server (IIS 6.0 running on Windows Server 2003). The ultimate goal of this specific script isn't to steal data or destroy the server; it is designed to force the target server to open the Windows Calculator app (calc.exe).
+
+In the cybersecurity world, "popping a calculator" is the universal, harmless way for a researcher to prove, "I have found a way to execute my own commands on your machine."
+
+
 
 ---
 
