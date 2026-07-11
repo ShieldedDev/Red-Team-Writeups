@@ -237,7 +237,7 @@ After execution, Meterpreter connected successfully.
 
 > 📷 **Screenshot**
 
-![Meterpreter Session](Images/msf-shell.png)
+![Meterpreter Session](Images/msf-revshell.png)
 
 This provided a more feature-rich shell for post-exploitation activities.
 
