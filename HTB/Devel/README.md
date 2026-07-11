@@ -347,6 +347,7 @@ exploit/windows/local/ms13_053_schlamperei
 exploit/windows/local/ms13_081_track_popup_menu
 ...
 ```
+![MSFVenom](Images/suggester.png)
 
 Among these, **MS10-015 (KiTrap0D)** is applicable to the target operating system and provides a straightforward route to SYSTEM privileges.
 
@@ -381,7 +382,6 @@ Run the exploit.
 ```text
 run
 ```
-![MSFVenom](Images/suggester.png)
 
 After successful execution, Metasploit establishes a new privileged Meterpreter session.
 
