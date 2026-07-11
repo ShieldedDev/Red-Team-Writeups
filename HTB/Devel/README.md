@@ -54,7 +54,7 @@ Connect to the FTP service.
 ftp 10.129.242.143
 ```
 
-![FTP Login](images/ftp_logged-in.png)
+![FTP Login](Images/ftp_logged-in.png)
 
 Login anonymously.
 
