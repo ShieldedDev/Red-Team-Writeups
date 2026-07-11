@@ -231,13 +231,13 @@ exploit/multi/http/tomcat_mgr_upload
 
 > 📷 **Screenshot**
 
-![Tomcat Upload Module](Images/tomcat_mgr_upload.png)
+![Tomcat Upload Module](Images/msf-options.png)
 
 After execution, Meterpreter connected successfully.
 
 > 📷 **Screenshot**
 
-![Meterpreter Session](Images/meterpreter_session.png)
+![Meterpreter Session](Images/msf-shell.png)
 
 This provided a more feature-rich shell for post-exploitation activities.
 
@@ -265,7 +265,7 @@ nt authority\system
 
 > 📷 **Screenshot**
 
-![SYSTEM Shell](Images/system_shell.png)
+![SYSTEM Shell](Images/flags.png)
 
 The reverse shell was already executing with **NT AUTHORITY\SYSTEM**, meaning no privilege escalation was required.
 
@@ -283,7 +283,7 @@ dir
 
 > 📷 **Screenshot**
 
-![Users Directory](Images/users_directory.png)
+![Users Directory](Images/flags.png)
 
 The Administrator profile was identified as the primary target.
 
@@ -300,7 +300,7 @@ dir
 
 > 📷 **Screenshot**
 
-![Administrator Desktop](Images/admin_desktop.png)
+![Administrator Desktop](Images/flags.png)
 
 Unlike traditional Hack The Box machines, Jerry stores both flags inside this directory.
 
