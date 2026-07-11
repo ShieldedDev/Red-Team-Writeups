@@ -213,7 +213,7 @@ Once the payload executed, the server initiated a reverse connection back to the
 
 > 📷 **Screenshot**
 
-![Reverse Shell](Images/reverse_shell.png)
+![Reverse Shell](Images/nc-success.png)
 
 An interactive Windows command shell was successfully obtained.
 
