@@ -347,7 +347,6 @@ exploit/windows/local/ms13_053_schlamperei
 exploit/windows/local/ms13_081_track_popup_menu
 ...
 ```
-![MSFVenom](Images/suggester.png)
 
 Among these, **MS10-015 (KiTrap0D)** is applicable to the target operating system and provides a straightforward route to SYSTEM privileges.
 
@@ -382,8 +381,7 @@ Run the exploit.
 ```text
 run
 ```
-
-![Exploit Configuration](Images/suggester-worked.png.png)
+![MSFVenom](Images/suggester.png)
 
 After successful execution, Metasploit establishes a new privileged Meterpreter session.
 
@@ -403,7 +401,7 @@ Output:
 NT AUTHORITY\SYSTEM
 ```
 
-![SYSTEM Meterpreter](Images/15_system_meterpreter.png)
+![Exploit Configuration](Images/suggester-worked.png)
 
 The privilege escalation is now complete.
 
@@ -413,7 +411,7 @@ The privilege escalation is now complete.
 
 Navigate to the standard user profile.
 
-![User Directory](Images/16_user_directory.png)
+![User Directory](Images/user-flag.png)
 
 ```cmd
 cd C:\Users\babis\Desktop
@@ -441,7 +439,7 @@ The user flag is successfully captured.
 
 Navigate to the Administrator desktop.
 
-![Root Flag](Images/17_root_flag.png)
+![Root Flag](Images/root-flag.png)
 
 ```cmd
 cd C:\Users\Administrator\Desktop
