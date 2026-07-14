@@ -10,14 +10,14 @@ This repository contains **PDF reports** documenting my solutions to various:
 
 These write-ups showcase my methodology, reasoning, and cybersecurity learning journey.
 
-> ⚠️ **Disclaimer:**  
+>  **Disclaimer:**  
 > All activities described in these reports were performed on legal, intentionally vulnerable environments.  
 > No unauthorized or illegal testing was performed.  
 > These materials are strictly for **education and ethical cybersecurity research**.
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ├── VulnHub/
 │ ├── Machine-1-Writeup.pdf
@@ -53,7 +53,7 @@ Each report typically includes:
 
 ---
 
-## 🧠 Skills Demonstrated
+## Skills Demonstrated
 
 ### 🔎 Enumeration & Reconnaissance
 - Network discovery  
@@ -61,12 +61,12 @@ Each report typically includes:
 - Web and directory enumeration  
 - Mapping the attack surface  
 
-### 🔐 Exploitation Concepts
+### Exploitation Concepts
 - Identifying misconfigurations  
 - Controlled exploitation techniques  
 - Clear documentation of steps  
 
-### 🧩 Post-Exploitation Concepts
+### Post-Exploitation Concepts
 - Privilege escalation methodology  
 - Lateral movement concepts  
 - Persistence (high‑level, educational)  
@@ -80,7 +80,7 @@ Each report typically includes:
 
 ---
 
-## 📚 Sources of Labs
+## Sources of Labs
 
 Write-ups in this repo come from platforms that allow public reports:
 
@@ -93,7 +93,7 @@ Only environments that explicitly allow write-ups are included.
 
 ---
 
-## 🚨 Ethical Notice
+## Ethical Notice
 
 This repository strictly follows:
 
@@ -106,7 +106,7 @@ This repository strictly follows:
 
 ---
 
-## 🔄 Future Updates
+## Future Updates
 
 Planned additions:
 
