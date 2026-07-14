@@ -53,7 +53,7 @@ OS Detection identified:
 
 ---
 
-![Nmap Scan](images/nmap.png)
+![Nmap Scan](Images/nmap.png)
 
 ---
 
@@ -74,7 +74,7 @@ Information discovered:
 
 ---
 
-![SMB Enumeration](images/nmap_smb.png)
+![SMB Enumeration](Images/nmap_smb.png)
 
 ---
 
@@ -95,7 +95,7 @@ Since this is a Windows XP SP3 machine, MS08-067 is the intended exploitation pa
 
 ---
 
-![SMB Vulnerability Scan](images/nmap_smb-vuln.png)
+![SMB Vulnerability Scan](Images/nmap_smb-vuln.png)
 
 ---
 
@@ -109,7 +109,7 @@ searchsploit MS08-067
 
 ---
 
-![SearchSploit](images/searchsploit.png)
+![SearchSploit](Images/searchsploit.png)
 
 Metasploit also contains the official exploit module.
 
@@ -119,7 +119,7 @@ search MS08-067
 
 ---
 
-![Metasploit Search](images/msf_search.png)
+![Metasploit Search](Images/msf_search.png)
 
 ---
 
@@ -141,13 +141,13 @@ LPORT 4444
 
 ---
 
-![Module Options](images/msf-set-option.png)
+![Module Options](Images/msf-set-option.png)
 
 Verified the configuration.
 
 ---
 
-![Exploit Options](images/msf_use_0.png)
+![Exploit Options](Images/msf_use_0.png)
 
 Executed the exploit.
 
@@ -159,7 +159,7 @@ The exploit successfully triggered the vulnerability and returned a Meterpreter 
 
 ---
 
-![Meterpreter Session](images/msf_shell.png)
+![Meterpreter Session](Images/msf_shell.png)
 
 ---
 
@@ -181,4 +181,4 @@ Output confirms:
 
 ---
 
-![System Information](images/sysinfo.png)
+![System Information](Images/sysinfo.png)
